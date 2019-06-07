@@ -6,16 +6,13 @@
 	<link href="Css/Reglas.css" type="text/css" rel="stylesheet"/>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-  <script
-    src="https://code.jquery.com/jquery-3.4.0.js"
-    integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
-    crossorigin="anonymous">
-  </script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link href="Img/favicon.ico" rel="shortcut icon" />
+
 </head>
 
 <body class="body">
@@ -33,6 +30,7 @@
           <a onclick="callView('niveles')" class="m3">Niveles</a>
           <a onclick="callView('testimonio')" class="m4">Testimonio</a>
           <a onclick="callView('contacto')" class="m5">Contacto</a>
+          <a data-toggle="modal" data-target="#modalInicioSesion" class="m5">Iniciar Sesión</a>
         </nav>
       </div>
     </div>&nbsp;
@@ -44,12 +42,52 @@
         <span style="font: bold">Copyright © 2019 Camilo Rivera 0000000 Fax : Pbx(000) 0000000 <br>
             Términos y condiciones | Política de tratamiento de datos personales</span><br>
           <a href="https://www.facebook.com/"><i  class="fa fa-facebook-official" style="font-size:25px;color:blue"></i></a>
-          <a href="https://www.instagram.com/?hl=es-la"> <i  class="fa fa-instagram" style="font-size:25px;color:yellow"></i></a>
-          <a href="https://twitter.com/?lang=es"> <i  class="fa fa-twitter-square" style="font-size:25px;color:white"></i></a>
+          <a href="https://www.instagram.com/?hl=es-la"> <i  class="fa fa-instagram" style="font-size:25px;color:black"></i></a>
+          <a href="https://twitter.com/?lang=es"> <i  class="fa fa-twitter-square" style="font-size:25px;color:black"></i></a>
     </footer>
   </div>
+
+<!-- Modal de promociòn-->
+  <div class="modal" tabindex="-1" role="dialog" id="modalPromocion">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+            <img style="width:100%; height: 350px;" src="Img/Banner.png" >
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Final modal de promociòn-->
+
+<!-- Modal de iniciar sesion-->
+  <div class="modal" tabindex="-1" role="dialog" id="modalInicioSesion">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="usuario"><span class="glyphicon glyphicon-user"></span> Usuario</label>
+              <input type="text" class="form-control" id="usuario" placeholder="ingrese usuario">
+            </div>
+            <div class="form-group">
+              <label for="clave"><span class="glyphicon glyphicon-eye-open"></span> Contrase&nacute;a</label>
+              <input type="text" class="form-control" id="clave" placeholder="Ingrese contraseña">
+            </div>
+            <button onclick="iniciarSesion()" class="btn btn-default btn-success btn-block">
+              Aceptar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Final modal de promociòn-->
 </body>
 </html>
+
 <script>
   $(function(){
     $("#content").load("Vistas/banner.html");
@@ -58,4 +96,14 @@
   function callView(viewName){
     $("#content").load("Vistas/" + viewName + ".html");
   }
+
+  function iniciarSesion(){
+    if(!document.getElementById("usuario").value || !document.getElementById("clave").value){
+      alert("Las credenciales son obligatorias.");
+    }
+  }
+
+  $(window).on('load',function(){
+      $('#modalPromocion').modal('show');
+  });
 </script>
