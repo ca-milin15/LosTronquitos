@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Los Tronquitos</title>
+	<link href="Css/Reglas.css" type="text/css" rel="stylesheet"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+  <script
+    src="https://code.jquery.com/jquery-3.4.0.js"
+    integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
+    crossorigin="anonymous">
+  </script>
+  <link href="Img/favicon.ico" rel="shortcut icon" />
+</head>
+
+<body class="body">
+  <img src="Img/encabezado.png" alt="" class="encabezado">
+  <div class="general">
+    
+    <div id="menuGral" class="menuGral">
+      <div class="menu">
+        <img src="Img/avion.png" alt="" class="menu">
+      </div>
+      <div class="menu1">
+        <nav>
+          <a onclick="callView('banner')" class="m1">Inicio</a>
+          <a onclick="callView('quienessomos')" class="m2">Quienes Somos?</a>
+          <a onclick="callView('niveles')" class="m3">Niveles</a>
+          <a onclick="callView('testimonio')" class="m4">Testimonio</a>
+          <a onclick="callView('contacto')" class="m5">Contacto</a>
+        </nav>
+      </div>
+    </div>&nbsp;
+    <div id="content" class="content">
+
+    </div>
+    <footer class="footer">
+      <hr style="color:black">
+        <span style="font: bold">Copyright © 2019 Camilo Rivera 0000000 Fax : Pbx(000) 0000000 <br>
+            Términos y condiciones | Política de tratamiento de datos personales</span><br>
+          <a href="https://www.facebook.com/"><i  class="fa fa-facebook-official" style="font-size:25px;color:blue"></i></a>
+          <a href="https://www.instagram.com/?hl=es-la"> <i  class="fa fa-instagram" style="font-size:25px;color:yellow"></i></a>
+          <a href="https://twitter.com/?lang=es"> <i  class="fa fa-twitter-square" style="font-size:25px;color:white"></i></a>
+    </footer>
+  </div>
+</body>
+</html>
+<script>
+  $(function(){
+    $("#content").load("Vistas/banner.html");
+  });
+
+  function callView(viewName){
+    $("#content").load("Vistas/" + viewName + ".html");
+  }
+</script>
