@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Los tronquitos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    .contenedorGeneral{
+        margin-top: 3%;
+    }
+    .comunicate{
+        margin-left: 25%;
+        width: 60%;
+    }
+    .formulario{
+        box-shadow: 2px 2px 10px green;
+        background-color: azure;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        margin-left: 23%;
+        margin-right: 23%;
+        border: 2px solid white;
+    }
+    .tamanoInput{
+        width: 30%;
+    }
+</style>
+<body>
+    <div class="contenedorGeneral">
+        <h2 style="margin-left: 13%">Comunícate con nosotros!</h3><br><br>
+        <div class="formulario">
+            <div class="cabecera" style="text-align: center"><h3>En que podemos ayudarte?</h3></div>
+            <hr>
+            <div class="cuerpo">
+                <form method="post" action="src/contacto/contacto.php">
+                    <div class="comunicate">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Nombre Completo</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Nombre y apellidos" 
+                            id="nombre" onblur="validarFormulario()" name="nombre" aria-label="nombre" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Correo electronico</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Correo electronico" 
+                            id="email" onblur="validarFormulario()" name="email" aria-label="email" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Asunto</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Asunto del mensaje" 
+                            id="asunto" onblur="validarFormulario()" name="asunto" aria-label="asunto" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Mensaje</span>
+                            </div>
+                            <textarea type="text" class="form-control" placeholder="Escriba aqui su mensaje" 
+                            id="mensaje" onblur="validarFormulario()" name="mensaje" aria-label="mensaje" aria-describedby="basic-addon1"></textarea>
+                        </div>
+                        <button id="btnEnviar" disabled name="btnEnviar" type="submit" style="margin-left: 35%" class="btn btn-primary btn-lg">Enviar</button>
+                        
+                    </div>
+                </form>
+            </div>
+        </div><br><br>
+        <div id="contacto">
+            <div class="contacto">
+              <div class="row">
+                  <div id="correo" class="columnsContacto">
+                      <i class="fa fa-envelope" style="font-size:30px;color:black"></i>
+                      <h4>Correo electrónico:</h4> <h5>lostronquintos@contacto.com.co</h5>
+                  </div>
+      
+                  <div id="celular" class="columnsContacto">
+                      <i class="fa fa-phone" style="font-size:30px;color:black"></i>
+                      <h4>Celular:</h4> <h5>+57(8) 263 2198 - 261 3757</h5>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function validarFormulario(){
+        if(document.getElementById("nombre").value != "" && 
+            document.getElementById("email").value != "" &&
+            document.getElementById("asunto").value != "" &&
+            document.getElementById("mensaje").value != ""){
+            document.getElementById("btnEnviar").disabled = false;
+        } else {
+            document.getElementById("btnEnviar").disabled = true;
+        }
+    }
+</script>
