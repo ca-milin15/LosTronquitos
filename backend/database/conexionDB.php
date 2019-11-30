@@ -10,10 +10,17 @@ class ConexionBaseDatos{
             $conexion = new PDO($this->dsn, $this->user, $this->password);
             $conexion -> beginTransaction();
             $result = $conexion->query($query);
-            return [
-                "resultadoConsulta" => $result ->fetch(PDO::FETCH_ASSOC),
-                "filas" => $result->rowCount()
-            ];
+            if($result->rowCount() > 1){
+                return [
+                    "resultadoConsulta" => $result ->fetchAll(),
+                    "filas" => $result->rowCount()
+                ];
+            } else {
+                return [
+                    "resultadoConsulta" => $result ->fetch(PDO::FETCH_ASSOC),
+                    "filas" => $result->rowCount()
+                ];
+            }
         } catch (PDOException $e) {
             echo 'Connection failed: ' . $e->getMessage();
         }

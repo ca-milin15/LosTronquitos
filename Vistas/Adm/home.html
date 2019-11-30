@@ -27,22 +27,22 @@
                 Modulos
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" onclick="llamarModulo('alumno')">
                     <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                     Alumnos
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" onclick="llamarModulo('matricula')">
                     <i class="fa fa-id-card" aria-hidden="true"></i>
                     Matriculas
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" onclick="llamarModulo('nivel')">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                     Niveles
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" onclick="llamarModulo('usuario')">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     Usuarios
                 </a>
@@ -57,9 +57,14 @@
           </form>
         </div>
     </nav>
+    <div id="content" class="content">
 </body>
 </html>
 <script>
+
+  function llamarModulo(modulo){
+    $("#content").load(modulo + ".html");
+  }
 
   function logout(){
     localStorage.removeItem("logged");

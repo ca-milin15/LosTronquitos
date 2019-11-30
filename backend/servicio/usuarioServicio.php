@@ -14,9 +14,20 @@ class ServicioUsuario{
             echo "$key - $value \n";
         }*/
     }
+
+    public function consultarUsuarios(){
+        $database = new ConexionBaseDatos();
+        $instanciaUsuario = new Usuario();
+        $query = $instanciaUsuario->listarUsuarios();
+        $res = $database -> ejecutarSentencia($query);
+        return $res;
+    }
 }
 
 if(isset($_POST["action"]) && $_POST["action"] == "login"){
     $r = new ServicioUsuario();
     echo json_encode($r -> consultarUsuario($_POST["usuario"], $_POST["clave"]));
+} elseif(isset($_POST["action"]) && $_POST["action"] == "listarUsuarios"){
+    $r = new ServicioUsuario();
+    echo json_encode($r -> consultarUsuarios());
 }

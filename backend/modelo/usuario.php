@@ -50,4 +50,8 @@ class Usuario{
     public function consultarUsuarioLogin($usuario, $clave){
         return "SELECT * FROM USUARIO WHERE usuario = '$usuario' AND clave = '$clave'";
     }
+
+    public function listarUsuarios(){
+        return "SELECT * FROM usuario";
+    }
 }

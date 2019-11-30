@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<div id="contentTable" style="margin-left: 10%;">
+    <h3 style="margin-top: 2%;">Matriculas</h3>
+    <table id="tabla" class="table table-striped" style="width: 80%; margin-top: 2%;">
+    </table>
+</div>
+</body>
+</html>
+<script>
+    function init(){
+        objetoListar = {"action": "listarMatriculas"};
+        respuestaPeticion = requestHttp("POST", 
+                                        "../../backend/servicio/matriculaServicio.php", 
+                                        objetoListar);    
+        objetoo = respuestaPeticion['resultadoConsulta'];  
+        if(respuestaPeticion['filas'] > 0){
+            var content = 
+            '<thead>' +
+                '<tr>' +
+                    '<th scope="col">Nivel</th>' +
+                    '<th scope="col">Alumno</th>' +
+                    '<th scope="col">Año</th>' +
+                    '<th scope="col">Valor</th>' +
+                    '<th scope="col">Fecha Matricula</th>' +
+                    '<th scope="col">Usuario Creación</th>' +
+                    '<th scope="col">Acciones</th>' +
+                '</tr>' +
+            '</thead>'+
+            '<tbody>';
+            objetoo.forEach(element => {
+                content = content + '<tr>'+
+                    '<td >' + element['nivel'] + '</td>' +
+                    '<td >' + element['alumno'] + '</td>' +
+                    '<td >' + element['anio'] + '</td>' +
+                    '<td >' + element['valor'] + '</td>' +
+                    '<td >' + element['fecha_matricula'] + '</td>' +
+                    '<td >' + element['usuario'] + '</td>' +
+                    '<td >'+
+                    '<i class="fa fa-eye" aria-hidden="true"></i> &nbsp;' +
+                    '<i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;' +
+                    '<i class="fa fa-trash" aria-hidden="true"></i>' +
+                    '</td>' +
+                '</tr>';
+            });        
+            content = content + '</tbody>';
+            document.getElementById("tabla").innerHTML = content;
+        }
+    }
+
+    function requestHttp(method, url, body){
+        var respuestaHttp;
+        $.ajax({
+        async: false,
+        method: method,
+        url: url,
+        data: body,
+        success: function(result){
+            respuestaHttp = JSON.parse(result);
+        }
+        });
+        return respuestaHttp;
+    }
+
+    init();
+</script>
