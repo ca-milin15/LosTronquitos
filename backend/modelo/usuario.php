@@ -46,4 +46,8 @@ class Usuario{
     public function getFechaCreacion(){
         return this.$fecha_creacion;
     }
+
+    public function consultarUsuarioLogin($usuario, $clave){
+        return "SELECT * FROM USUARIO WHERE usuario = '$usuario' AND clave = '$clave'";
+    }
 }

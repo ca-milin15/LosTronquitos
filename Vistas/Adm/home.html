@@ -50,10 +50,29 @@
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
-            <span>Bienvenido Camilo Rivera</span>&nbsp;&nbsp;
-            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Salir</button>
+            <span>Bienvenido</span>&nbsp;&nbsp;<span id="lblUsuario" name="lblUsuario"></span>&nbsp;&nbsp;
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="button" onclick="logout()">
+              Salir
+            </button>
           </form>
         </div>
     </nav>
 </body>
 </html>
+<script>
+
+  function logout(){
+    localStorage.removeItem("logged");
+    window.location.replace("../../index.html");
+  }
+
+  function init(){
+    if(localStorage["logged"] != undefined){
+      var objeto = JSON.parse(localStorage["logged"]);
+      document.getElementById("lblUsuario").innerHTML = objeto["resultadoConsulta"]["usuario"];
+    } else {
+      window.location.replace("../../index.html");
+    }
+  }
+  init();
+</script>

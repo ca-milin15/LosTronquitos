@@ -69,11 +69,11 @@
           <form role="form" method="POST" action="src/login/login.php">
             <div class="form-group">
               <label for="usuario"><span class="glyphicon glyphicon-user"></span> Usuario</label>
-              <input type="text" class="form-control" id="usuario" name="usuario" placeholder="ingrese usuario">
+              <input type="text" class="form-control" id="txtUsuario" name="txtUsuario" placeholder="ingrese usuario">
             </div>
             <div class="form-group">
               <label for="clave"><span class="glyphicon glyphicon-eye-open"></span> Contrase&nacute;a</label>
-              <input type="password" class="form-control" id="clave" name="clave" placeholder="Ingrese contraseña">
+              <input type="password" class="form-control" id="txtClave" name="txtClave" placeholder="Ingrese contraseña">
             </div>
             <button type="button" onclick="logUser()" class="btn btn-default btn-success btn-block">
               Aceptar
@@ -89,7 +89,30 @@
 
 <script>
   function logUser(){
-    alert("Hola");
+    usuario = document.getElementById("txtUsuario").value;
+    clave = document.getElementById("txtClave").value;
+    objetoLog = {"action": "login", "usuario": usuario,"clave": clave};
+    respuestaPeticion = requestHttp("POST", 
+                                    "backend/servicio/usuarioServicio.php", 
+                                    objetoLog);                       
+    if(respuestaPeticion['filas'] > 0){
+      localStorage["logged"] = JSON.stringify(respuestaPeticion);
+      window.location.replace("Vistas/Adm/home.html");
+    }
+  }
+
+  function requestHttp(method, url, body){
+    var respuestaHttp;
+    $.ajax({
+      async: false,
+      method: method,
+      url: url,
+      data: body,
+      success: function(result){
+        respuestaHttp = JSON.parse(result);
+      }
+    });
+    return respuestaHttp;
   }
 
   $(function(){

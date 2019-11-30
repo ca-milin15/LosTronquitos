@@ -6,13 +6,17 @@ class ServicioUsuario{
 
     public function consultarUsuario($usuario, $clave){
         $database = new ConexionBaseDatos();
-        $query = "SELECT * FROM USUARIO WHERE usuario = '$usuario' AND clave = '$clave'";
+        $instanciaUsuario = new Usuario();
+        $query = $instanciaUsuario->consultarUsuarioLogin($usuario, $clave);
         $res = $database -> ejecutarSentencia($query);
-        foreach($res["resultadoConsulta"] as $key => $value){
+        return $res;
+        /*foreach($res["resultadoConsulta"] as $key => $value){
             echo "$key - $value \n";
-        }
+        }*/
     }
 }
 
-$r = new ServicioUsuario();
-echo $r -> consultarUsuario("camilo.rivera", "camilo.rivera");
+if(isset($_POST["action"]) && $_POST["action"] == "login"){
+    $r = new ServicioUsuario();
+    echo json_encode($r -> consultarUsuario($_POST["usuario"], $_POST["clave"]));
+}
