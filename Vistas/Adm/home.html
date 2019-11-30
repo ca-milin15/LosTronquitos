@@ -69,7 +69,7 @@
   function init(){
     if(localStorage["logged"] != undefined){
       var objeto = JSON.parse(localStorage["logged"]);
-      document.getElementById("lblUsuario").innerHTML = objeto["resultadoConsulta"]["usuario"];
+      document.getElementById("lblUsuario").innerHTML = objeto["resultadoConsulta"]["nombre_usuario"];
     } else {
       window.location.replace("../../index.html");
     }
