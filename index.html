@@ -60,7 +60,7 @@
 
 <!-- Modal de iniciar sesion-->
   <div class="modal" tabindex="-1" role="dialog" id="modalInicioSesion">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-md" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -78,6 +78,7 @@
             <button type="button" onclick="logUser()" class="btn btn-default btn-success btn-block">
               Aceptar
             </button>
+            <span style="color: red" id="lblAlertaLog"></span>
           </form>
         </div>
       </div>
@@ -98,6 +99,8 @@
     if(respuestaPeticion['filas'] > 0){
       localStorage["logged"] = JSON.stringify(respuestaPeticion);
       window.location.replace("Vistas/Adm/home.html");
+    } else {
+      document.getElementById("lblAlertaLog").innerHTML = "Credenciales erradas.";
     }
   }
 
